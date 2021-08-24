@@ -1,0 +1,31 @@
+<div class="reg-form w-75 my-5 mx-auto">
+  <h3 class="mb-5">Login Form</h3>
+
+  <form [formGroup]='loginForm' (ngSubmit)='submitLogin(loginForm)'>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email">
+      <div class="alert alert-danger" *ngIf="loginForm.get('email')?.errors != null && loginForm.get('email')?.touched">
+        <p *ngIf="loginForm.get('email')?.errors?.required">Email is required</p>
+        <p *ngIf="loginForm.get('email')?.errors?.email">Invalid email address</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password">
+      <div class="alert alert-danger" *ngIf="loginForm.get('password')?.errors != null && loginForm.get('password')?.touched">
+        <p *ngIf="loginForm.get('password')?.errors?.required">Password is required</p>
+        <p *ngIf="loginForm.get('password')?.errors?.pattern">Password must start with capital letter</p>
+      </div>
+    </div>
+
+    <div class="alert alert-danger" *ngIf='errors'> {{errors}}</div>
+
+    <div class="d-flex justify-content-between mt-3">
+      <button [disabled]='loginForm.invalid' type="submit" class="btn btn-primary">Login</button>
+      <p class="my-1">Don't have account? <a class="text-primary" routerLink='/register'>Resgister</a></p>
+    </div>
+  </form>
+</div>

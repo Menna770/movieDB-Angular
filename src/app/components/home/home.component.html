@@ -1,0 +1,55 @@
+<app-home-header [parentData]='trendingMovies'></app-home-header>
+
+<div class="container">
+
+  <!-- TRENDING MOVIES -->
+  <div class="row my-5">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="head mb-4">
+        <h2>Trending<br>Movies<br>to watch now</h2>
+        <p class="text-muted my-3">most watched movies by day</p>
+      </div>
+    </div>
+
+    <div *ngFor='let movie of trendingMovies' class="col-6 col-md-3 col-lg-2">
+      <div class="movie mb-4 text-center">
+        <a [routerLink]='["/moviedetails" , movie.id]'>
+          <img class="w-100" [src]='imgUrl+movie.poster_path' />
+          <h3 class="h6 my-2">{{movie.title}} {{movie.name}}</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRENDING TV -->
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="head mb-4">
+        <h2>Trending<br>TV<br>to watch now</h2>
+        <p class="text-muted">most watched movies by day</p>
+      </div>
+    </div>
+
+    <div *ngFor='let tv of trendingTv' class="col-6 col-md-3 col-lg-2">
+      <div class="movie mb-4">
+        <img class="w-100" [src]='imgUrl+tv.poster_path' />
+        <h3 class="h6 my-2">{{tv.title}}</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRENDING PEOPLE -->
+  <!-- <div class="row">
+    <div class="col-4">
+      People
+    </div>
+
+    <div *ngFor='let person of trendingPeople' class="col-2">
+      <div class="movie mb-4">
+        <img class="w-100" [src]='imgUrl+person.profile_path' />
+        <h3 class="h6 my-2">{{person.name}}</h3>
+      </div>
+    </div>
+  </div> -->
+
+</div>

@@ -1,0 +1,17 @@
+<section class="movies my-5">
+  <div class="container">
+    <h1 class="text-center mb-5">Trending Movies</h1>
+    <div class="row">
+
+      <div *ngFor='let movie of trendingMovies' class="col-6 col-md-3 col-lg-2">
+        <div class="movie mb-4 text-center">
+          <a [routerLink]='["/moviedetails" , movie.id]'>
+            <img class="w-100" [src]='imgUrl+movie.poster_path' />
+            <h3 class="h6 my-2">{{movie.title}} {{movie.name}}</h3>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

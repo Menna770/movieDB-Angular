@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row my-5">
+
+    <div class="col-12 col-lg-4">
+      <div class="movie-img">
+        <img class="w-100" [src]='imgUrl+movieDetails?.poster_path' />
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-8">
+      <div class="movie-info p-5">
+        <h2>{{movieDetails?.original_title}}</h2>
+        <p class="my-3">{{movieDetails?.overview}}</p>
+      </div>
+    </div>
+
+  </div>
+</div>

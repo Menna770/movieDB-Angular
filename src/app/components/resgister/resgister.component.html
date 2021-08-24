@@ -1,0 +1,61 @@
+<div class="reg-form w-75 my-5 mx-auto">
+    <h3 class="mb-5">Registeration Form</h3>
+
+  <form [formGroup]='regForm' (ngSubmit)='submitRegister(regForm)'>
+
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" class="form-control" id="fname" formControlName="first_name">
+        <div class="alert alert-danger" *ngIf="regForm.get('first_name')?.errors != null && regForm.get('first_name')?.touched">
+          <p *ngIf="regForm.get('first_name')?.errors?.required">First name is required</p>
+          <p *ngIf="regForm.get('first_name')?.errors?.minlength">First name must be 3 characters min</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" class="form-control" id="lname" formControlName="last_name">
+        <div class="alert alert-danger" *ngIf="regForm.get('last_name')?.errors != null && regForm.get('last_name')?.touched">
+          <p *ngIf="regForm.get('last_name')?.errors?.required">Last name is required</p>
+          <p *ngIf="regForm.get('last_name')?.errors?.minlength">Last name must be 3 characters min</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" class="form-control" id="age" formControlName="age">
+        <div class="alert alert-danger" *ngIf="regForm.get('age')?.errors != null && regForm.get('age')?.touched">
+          <p *ngIf="regForm.get('age')?.errors?.required">Age is required</p>
+          <p *ngIf="regForm.get('age')?.errors?.min">Allowed age range 16 : 60 years</p>
+          <p *ngIf="regForm.get('age')?.errors?.max">Allowed age range 16 : 60 years</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email">
+        <div class="alert alert-danger" *ngIf="regForm.get('email')?.errors != null && regForm.get('email')?.touched">
+          <p *ngIf="regForm.get('email')?.errors?.required">Email is required</p>
+          <p *ngIf="regForm.get('email')?.errors?.email">Invalid email address</p>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" formControlName="password">
+        <div class="alert alert-danger" *ngIf="regForm.get('password')?.errors != null && regForm.get('password')?.touched">
+          <p *ngIf="regForm.get('password')?.errors?.required">Password is required</p>
+          <p *ngIf="regForm.get('password')?.errors?.pattern">Password must start with capital letter</p>
+        </div>
+      </div>
+
+      <div class="alert alert-danger" *ngIf='errors'> {{errors}}</div>
+
+
+      <div class="d-flex justify-content-between mt-3">
+        <button [disabled]='regForm.invalid' type="submit" class="btn btn-primary">Register</button>
+        <p class="my-1">Already have account? <a class="text-primary" routerLink='/login'>Login</a></p>
+      </div>
+    </form>
+  </div>
+
